@@ -12,18 +12,15 @@
             theme: {
                 extend: {
                     colors: {
-                        // Paleta oficial extraída de Utils.kt, Theme.kt y TarjetaAlerta.kt de Mi Ruta
                         miruta: {
-                            primary: '#FEB30F',          // Amarillo/Oro oficial de identidad
+                            primary: '#FEB30F',
                             primaryHover: '#E59A00',
-                            // Modo Claro (obtenerEsquemaColoresClaro)
-                            bgLight: '#F0E8E4',         // Fondo crema/cálido de la app
-                            surfaceLight: '#FFFFFF',    // Tarjetas y superficies blancas
-                            itemLight: '#F4F4F4',       // Items y contenedores secundarios
-                            textLight: '#191B1D',       // Texto principal oscuro
-                            textMutedLight: '#5F6368',  // Texto secundario gris
-                            borderLight: '#CBD5E1',     // Bordes claros sutiles
-                            // Modo Noche (obtenerEsquemaColoresOscuro)
+                            bgLight: '#F0E8E4',
+                            surfaceLight: '#FFFFFF',
+                            itemLight: '#F4F4F4',
+                            textLight: '#191B1D',
+                            textMutedLight: '#5F6368',
+                            borderLight: '#CBD5E1',
                             bgDark: '#191B1D',
                             surfaceDark: '#212020',
                             itemDark: '#2A2D32',
@@ -31,12 +28,11 @@
                             textMutedDark: '#A0A0A0',
                             borderDark: 'rgba(255, 255, 255, 0.08)'
                         },
-                        // Colores semánticos reales del sistema de alertas y estados de la app
                         m3status: {
-                            success: '#2ECC71', // Verde esmeralda (GPS Activo, Alerta Global)
-                            warning: '#F39C12', // Ámbar/Naranja (Pendiente, Advertencia)
-                            danger: '#D71920',  // Rojo Material (Eliminar, Retraso Grave)
-                            info: '#4285F4'     // Azul (Pasajero, Desvío)
+                            success: '#2ECC71',
+                            warning: '#F39C12',
+                            danger: '#D71920',
+                            info: '#4285F4'
                         }
                     },
                     fontFamily: {
@@ -46,130 +42,10 @@
             }
         }
     </script>
-    <!-- Google Fonts Inter (Familia tipográfica oficial M3) -->
+    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Estilos dinámicos para MODO CLARO / MODO OSCURO basados en la app móvil */
-        html.light body {
-            background-color: #F0E8E4;
-            color: #191B1D;
-        }
-        html.dark body {
-            background-color: #191B1D;
-            color: #FFFFFF;
-        }
-
-        /* Scrollbar limpio */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.03);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.15);
-            border-radius: 9999px;
-        }
-        html.dark ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* Tarjetas M3 adaptativas (Claro vs Oscuro) */
-        .m3-surface-card {
-            border-radius: 1.25rem; /* 20.dp */
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-        html.light .m3-surface-card {
-            background-color: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-        }
-        html.dark .m3-surface-card {
-            background-color: #212020;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .m3-inner-item {
-            border-radius: 0.875rem; /* 14.dp */
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-        html.light .m3-inner-item {
-            background-color: #F8F9FA;
-            border: 1px solid #E2E8F0;
-        }
-        html.dark .m3-inner-item {
-            background-color: #2A2D32;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* BOTONES DE REFERENCIA VISUAL DE LA APP */
-        .app-chip-btn {
-            border-radius: 0.75rem; /* 12.dp */
-            font-weight: 700;
-            font-size: 0.75rem;
-            padding: 0.5rem 1rem;
-            transition: all 0.15s ease-in-out;
-            cursor: pointer;
-            display: inline-flex;
-            items-center: center;
-            gap: 0.375rem;
-        }
-
-        /* Botón Seleccionado: Amarillo Mi Ruta sólido + Texto e icono Oscuro */
-        .app-chip-btn.active, .sidebar-item.active {
-            background-color: #FEB30F !important;
-            color: #191B1D !important;
-            border-color: #FEB30F !important;
-            box-shadow: 0 2px 8px rgba(254, 179, 15, 0.3);
-        }
-        .app-chip-btn.active svg, .sidebar-item.active svg {
-            color: #191B1D !important;
-            fill: currentColor;
-        }
-
-        /* Botón No Seleccionado: Superficie de app + Borde visible sutil + Texto oscuro */
-        html.light .app-chip-btn:not(.active), html.light .sidebar-item:not(.active) {
-            background-color: #FFFFFF;
-            color: #191B1D;
-            border: 1px solid #CBD5E1;
-        }
-        html.light .app-chip-btn:not(.active):hover, html.light .sidebar-item:not(.active):hover {
-            background-color: #F1F5F9;
-            border-color: #FEB30F;
-        }
-
-        html.dark .app-chip-btn:not(.active), html.dark .sidebar-item:not(.active) {
-            background-color: #2A2D32;
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        html.dark .app-chip-btn:not(.active):hover, html.dark .sidebar-item:not(.active):hover {
-            background-color: #33373E;
-            border-color: #FEB30F;
-        }
-
-        .mobile-item.active {
-            color: #FEB30F;
-        }
-        .mobile-item.active .mobile-icon-container {
-            background-color: rgba(254, 179, 15, 0.2);
-        }
-
-        /* Visibilidad de vistas SPA */
-        .admin-view {
-            display: none;
-        }
-        .admin-view.active {
-            display: block;
-        }
-    </style>
+    <!-- Estilos M3 Centralizados -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="min-h-screen flex flex-col md:flex-row antialiased selection:bg-miruta-primary selection:text-black pb-16 md:pb-0">
 
@@ -186,32 +62,55 @@
                     </div>
                     <h3 class="text-sm font-black uppercase tracking-wider">Dar de Alta Conductor</h3>
                 </div>
-                <button onclick="closeModal('modalRegisterDriver')" class="text-miruta-textMutedLight dark:text-miruta-textMutedDark hover:text-miruta-primary p-1 rounded-lg cursor-pointer">
+                <button type="button" onclick="window.app.closeModal('modalRegisterDriver')" class="text-miruta-textMutedLight dark:text-miruta-textMutedDark hover:text-miruta-primary p-1 rounded-lg cursor-pointer">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
 
-            <div class="space-y-3">
+            <form onsubmit="window.app.handleRegisterDriver(event)" class="space-y-3">
                 <div>
                     <label for="modalNewDriverUser" class="text-[11px] font-bold dark:text-miruta-textMutedDark text-slate-600 mb-1 block">Usuario Conductor</label>
-                    <input type="text" id="modalNewDriverUser" placeholder="Ej. rafa2" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
+                    <input type="text" id="modalNewDriverUser" required placeholder="Ej. rafa2" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
                 </div>
                 <div>
                     <label for="modalNewDriverPass" class="text-[11px] font-bold dark:text-miruta-textMutedDark text-slate-600 mb-1 block">Contraseña Temporal</label>
-                    <input type="password" id="modalNewDriverPass" placeholder="••••••••" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
+                    <input type="password" id="modalNewDriverPass" required placeholder="••••••••" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
                 </div>
                 <div>
                     <label for="modalNewDriverRoute" class="text-[11px] font-bold dark:text-miruta-textMutedDark text-slate-600 mb-1 block">Ruta Asignada</label>
-                    <input type="text" id="modalNewDriverRoute" placeholder="Ej. Línea L1 - Troncal" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
+                    <input type="text" id="modalNewDriverRoute" required placeholder="Ej. Línea L1 - Troncal" class="w-full dark:bg-miruta-bgDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition">
+                </div>
+
+                <div class="flex space-x-3 pt-3">
+                    <button type="button" onclick="window.app.closeModal('modalRegisterDriver')" class="flex-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 font-bold py-2.5 rounded-xl text-xs border border-slate-300 dark:border-white/10 transition cursor-pointer">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="modalRegisterSubmit" class="flex-1 bg-miruta-primary hover:bg-miruta-primaryHover text-miruta-textLight font-black py-2.5 rounded-xl text-xs transition shadow-md shadow-miruta-primary/20 cursor-pointer disabled:opacity-50">
+                        Registrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRM DIALOG M3 ACCESIBLE -->
+    <div id="modalConfirmDialog" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="m3-surface-card max-w-sm w-full p-6 space-y-4 border shadow-2xl relative">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-red-500/15 text-red-500 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                </div>
+                <div>
+                    <h3 id="modalConfirmTitle" class="text-sm font-black">¿Confirmar Acción?</h3>
+                    <p id="modalConfirmMessage" class="text-xs dark:text-miruta-textMutedDark text-slate-500 mt-0.5">Esta acción no se puede deshacer.</p>
                 </div>
             </div>
-
             <div class="flex space-x-3 pt-2">
-                <button onclick="closeModal('modalRegisterDriver')" class="flex-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 font-bold py-2.5 rounded-xl text-xs border border-slate-300 dark:border-white/10 transition cursor-pointer">
+                <button type="button" id="modalConfirmCancel" class="flex-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 font-bold py-2.5 rounded-xl text-xs border border-slate-300 dark:border-white/10 transition cursor-pointer">
                     Cancelar
                 </button>
-                <button onclick="registerDriver(); closeModal('modalRegisterDriver');" class="flex-1 bg-miruta-primary hover:bg-miruta-primaryHover text-miruta-textLight font-black py-2.5 rounded-xl text-xs transition shadow-md shadow-miruta-primary/20 cursor-pointer">
-                    Registrar
+                <button type="button" id="modalConfirmAccept" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-black py-2.5 rounded-xl text-xs transition cursor-pointer">
+                    Confirmar
                 </button>
             </div>
         </div>
@@ -227,19 +126,19 @@
             </div>
         </div>
         <div class="flex items-center space-x-2">
-            <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-bold">
+            <button onclick="window.app.toggleTheme()" class="p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-bold cursor-pointer">
                 <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
             </button>
-            <button onclick="logout()" class="text-xs text-m3status-danger bg-m3status-danger/10 border border-m3status-danger/20 px-3 py-1.5 rounded-xl font-bold cursor-pointer">
+            <button onclick="window.app.logout()" class="text-xs text-m3status-danger bg-m3status-danger/10 border border-m3status-danger/20 px-3 py-1.5 rounded-xl font-bold cursor-pointer">
                 Salir
             </button>
         </div>
     </header>
 
-    <!-- SIDEBAR DE NAVEGACIÓN REAL (NavigationRail M3 para Escritorio) -->
+    <!-- SIDEBAR DE NAVEGACIÓN (Desktop NavigationRail M3) -->
     <aside class="hidden md:flex w-64 dark:bg-miruta-surfaceDark bg-white border-r dark:border-miruta-borderDark border-slate-200 flex-col shrink-0 justify-between sticky top-0 h-screen shadow-sm">
         <div>
-            <!-- Branding Header con Logo Original mediante img -->
+            <!-- Branding Header con Logo Original -->
             <div class="p-6 border-b dark:border-miruta-borderDark border-slate-200 flex items-center space-x-3.5">
                 <img src="logo.png" alt="Mi Ruta" class="w-10 h-10 object-contain shrink-0">
                 <div>
@@ -250,19 +149,19 @@
 
             <!-- Menú de Navegación SPA -->
             <nav class="p-4 space-y-2">
-                <button onclick="switchView('dashboard')" id="nav-dashboard" class="sidebar-item active w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
+                <button onclick="window.app.switchView('dashboard')" id="nav-dashboard" class="sidebar-item active w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
                     <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                     <span>Dashboard</span>
                 </button>
-                <button onclick="switchView('conductores')" id="nav-conductores" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
+                <button onclick="window.app.switchView('conductores')" id="nav-conductores" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
                     <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22L5 20c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22L20 6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 11H6V6h12v5z"/></svg>
                     <span>Conductores</span>
                 </button>
-                <button onclick="switchView('usuarios')" id="nav-usuarios" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
+                <button onclick="window.app.switchView('usuarios')" id="nav-usuarios" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
                     <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                     <span>Usuarios y Roles</span>
                 </button>
-                <button onclick="switchView('alertas')" id="nav-alertas" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
+                <button onclick="window.app.switchView('alertas')" id="nav-alertas" class="sidebar-item w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition cursor-pointer">
                     <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
                     <span>Moderación de Alertas</span>
                 </button>
@@ -281,11 +180,11 @@
                         <span class="text-[10px] font-semibold dark:text-miruta-textMutedDark text-slate-500">Superusuario</span>
                     </div>
                 </div>
-                <button onclick="toggleTheme()" title="Cambiar Tema" class="p-2 rounded-xl bg-white dark:bg-miruta-itemDark border border-slate-200 dark:border-white/10 text-xs shadow-sm hover:scale-105 transition cursor-pointer">
+                <button onclick="window.app.toggleTheme()" title="Cambiar Tema" class="p-2 rounded-xl bg-white dark:bg-miruta-itemDark border border-slate-200 dark:border-white/10 text-xs shadow-sm hover:scale-105 transition cursor-pointer">
                     <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
                 </button>
             </div>
-            <button onclick="logout()" class="w-full bg-m3status-danger/10 hover:bg-m3status-danger/20 text-red-500 border border-m3status-danger/20 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 cursor-pointer">
+            <button onclick="window.app.logout()" class="w-full bg-m3status-danger/10 hover:bg-m3status-danger/20 text-red-500 border border-m3status-danger/20 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 cursor-pointer">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                 <span>Cerrar Sesión</span>
             </button>
@@ -295,7 +194,7 @@
     <!-- ÁREA PRINCIPAL -->
     <div class="flex-1 flex flex-col min-w-0">
 
-        <!-- TopAppBar Header Conmutador de Hora -->
+        <!-- TopAppBar Header -->
         <header class="dark:bg-miruta-surfaceDark bg-white border-b dark:border-miruta-borderDark border-slate-200 p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-sm">
             <div>
                 <div class="flex items-center space-x-2 mb-1.5">
@@ -309,7 +208,7 @@
             </div>
 
             <div class="flex items-center space-x-3">
-                <button onclick="refreshAll()" class="app-chip-btn bg-white dark:bg-miruta-itemDark border border-slate-200 dark:border-white/10 shadow-sm active:scale-95">
+                <button onclick="window.app.refreshAll()" class="app-chip-btn bg-white dark:bg-miruta-itemDark border border-slate-200 dark:border-white/10 shadow-sm active:scale-95">
                     <svg class="w-4 h-4 text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     <span>Actualizar Todo</span>
                 </button>
@@ -323,7 +222,7 @@
             <div id="view-dashboard" class="admin-view active space-y-8">
                 <!-- Tarjetas KPI Resumen -->
                 <section class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                    <div onclick="switchView('conductores')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
+                    <div onclick="window.app.switchView('conductores')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
                         <div class="w-12 h-12 rounded-2xl bg-m3status-success/15 border border-m3status-success/30 text-m3status-success flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                         </div>
@@ -331,12 +230,12 @@
                             <p class="text-xs font-extrabold uppercase tracking-wider dark:text-miruta-textMutedDark text-slate-500">Unidades Activas</p>
                             <h3 id="statDriversCount" class="text-2xl font-black mt-0.5">--</h3>
                             <p class="text-[11px] text-m3status-success font-bold flex items-center gap-1 mt-0.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-m3status-success inline-block"></span> Transmitiendo GPS
+                                <span class="w-1.5 h-1.5 rounded-full bg-m3status-success inline-block"></span> Transmitiendo GPS en vivo
                             </p>
                         </div>
                     </div>
 
-                    <div onclick="switchView('usuarios')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
+                    <div onclick="window.app.switchView('usuarios')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
                         <div class="w-12 h-12 rounded-2xl bg-miruta-primary/15 border border-miruta-primary/30 text-miruta-primary flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                         </div>
@@ -347,14 +246,14 @@
                         </div>
                     </div>
 
-                    <div onclick="switchView('alertas')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
+                    <div onclick="window.app.switchView('alertas')" class="m3-surface-card p-5 flex items-center space-x-4 cursor-pointer hover:border-miruta-primary transition">
                         <div class="w-12 h-12 rounded-2xl bg-m3status-danger/15 border border-m3status-danger/30 text-m3status-danger flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
                         </div>
                         <div>
                             <p class="text-xs font-extrabold uppercase tracking-wider dark:text-miruta-textMutedDark text-slate-500">Alertas Comunitarias</p>
                             <h3 id="statAlertsCount" class="text-2xl font-black mt-0.5">--</h3>
-                            <p class="text-[11px] text-m3status-danger font-bold mt-0.5">Reportes de la red</p>
+                            <p class="text-[11px] text-m3status-danger font-bold mt-0.5">Reportes en tiempo real</p>
                         </div>
                     </div>
                 </section>
@@ -381,16 +280,16 @@
                             <div class="m3-inner-item p-3.5 flex justify-between items-center">
                                 <div>
                                     <p class="text-xs font-bold">Telemetría GPS en Vivo</p>
-                                    <p class="text-[11px] dark:text-miruta-textMutedDark text-slate-500">Sincronización de conductores</p>
+                                    <p class="text-[11px] dark:text-miruta-textMutedDark text-slate-500">Sincronización en tiempo real vía onSnapshot</p>
                                 </div>
-                                <span class="text-xs font-bold text-m3status-success">Activa</span>
+                                <span class="text-xs font-bold text-m3status-success">Escuchando</span>
                             </div>
                             <div class="m3-inner-item p-3.5 flex justify-between items-center">
                                 <div>
                                     <p class="text-xs font-bold">Moderación Comunitaria</p>
-                                    <p class="text-[11px] dark:text-miruta-textMutedDark text-slate-500">Verificación de incidencias</p>
+                                    <p class="text-[11px] dark:text-miruta-textMutedDark text-slate-500">Escucha reactiva de incidencias ciudadanas</p>
                                 </div>
-                                <span class="text-xs font-black text-miruta-primary">En Espera</span>
+                                <span class="text-xs font-black text-miruta-primary">Sincronizada</span>
                             </div>
                         </div>
                     </div>
@@ -402,15 +301,15 @@
                             <p class="text-xs dark:text-miruta-textMutedDark text-slate-500 mt-0.5">Selecciona un área para gestionar</p>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div onclick="switchView('conductores')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
+                            <div onclick="window.app.switchView('conductores')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
                                 <div class="w-10 h-10 rounded-xl bg-miruta-primary/15 text-miruta-primary mx-auto mb-2 flex items-center justify-center font-bold group-hover:scale-110 transition">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22L5 20c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1h8v1c0 .55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22L20 6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/></svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22L5 20c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22L20 6c0-3.5-3.58-4-8-4s-8 .5-8 4v10z"/></svg>
                                 </div>
                                 <span class="text-xs font-extrabold block">Conductores</span>
                                 <span class="text-[10px] dark:text-miruta-textMutedDark text-slate-500 block">Alta y GPS</span>
                             </div>
 
-                            <div onclick="switchView('usuarios')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
+                            <div onclick="window.app.switchView('usuarios')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
                                 <div class="w-10 h-10 rounded-xl bg-miruta-primary/15 text-miruta-primary mx-auto mb-2 flex items-center justify-center font-bold group-hover:scale-110 transition">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                                 </div>
@@ -418,7 +317,7 @@
                                 <span class="text-[10px] dark:text-miruta-textMutedDark text-slate-500 block">Gestión Roles</span>
                             </div>
 
-                            <div onclick="switchView('alertas')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
+                            <div onclick="window.app.switchView('alertas')" role="button" tabindex="0" class="m3-inner-item p-4 text-center hover:border-miruta-primary transition group cursor-pointer">
                                 <div class="w-10 h-10 rounded-xl bg-m3status-danger/15 text-m3status-danger mx-auto mb-2 flex items-center justify-center font-bold group-hover:scale-110 transition">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
                                 </div>
@@ -437,7 +336,7 @@
                         <h2 class="text-xl font-black">Gestión de Conductores y Unidades</h2>
                         <p class="text-xs dark:text-miruta-textMutedDark text-slate-500 font-medium mt-0.5">Monitoreo en vivo de chóferes y alta de unidades asignadas</p>
                     </div>
-                    <button onclick="openModal('modalRegisterDriver')" class="app-chip-btn active shadow-md cursor-pointer">
+                    <button onclick="window.app.openModal('modalRegisterDriver')" class="app-chip-btn active shadow-md cursor-pointer">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m7-8H5"/></svg>
                         <span>Dar de Alta Conductor</span>
                     </button>
@@ -446,15 +345,17 @@
                 <!-- Lista de Conductores -->
                 <div class="m3-surface-card p-6 space-y-4">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-xs font-extrabold uppercase tracking-wider dark:text-miruta-textMutedDark text-slate-500">Unidades Transmitiendo en Tiempo Real</h3>
-                        <button onclick="loadDrivers()" class="app-chip-btn">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                            <span>Actualizar</span>
-                        </button>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block"></span>
+                            <h3 class="text-xs font-extrabold uppercase tracking-wider dark:text-miruta-textMutedDark text-slate-500">Unidades Transmitiendo en Tiempo Real</h3>
+                        </div>
                     </div>
 
                     <div id="driversList" class="space-y-3 overflow-y-auto max-h-[600px] pr-1">
-                        <p class="dark:text-miruta-textMutedDark text-slate-500 text-xs italic text-center py-6">Cargando unidades...</p>
+                        <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
+                            <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            <span>Conectando a telemetría GPS...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -466,15 +367,23 @@
                         <h2 class="text-xl font-black">Gestión de Usuarios y Roles</h2>
                         <p class="text-xs dark:text-miruta-textMutedDark text-slate-500 font-medium mt-0.5">Control de cuentas registradas y permisos de pasajeros / conductores</p>
                     </div>
-                    <button onclick="loadUsers()" class="app-chip-btn">
+                    <button onclick="window.app.loadUsers()" class="app-chip-btn">
                         <svg class="w-4 h-4 text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                         <span>Actualizar Usuarios</span>
                     </button>
                 </div>
 
+                <!-- Buscador de usuarios -->
+                <div class="relative">
+                    <input type="text" id="userSearchInput" placeholder="Buscar por usuario o rol..." class="w-full sm:w-80 dark:bg-miruta-surfaceDark bg-white border dark:border-white/10 border-slate-300 rounded-xl px-4 py-2.5 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-miruta-primary focus:ring-1 focus:ring-miruta-primary transition shadow-sm">
+                </div>
+
                 <div class="m3-surface-card p-6 space-y-4">
                     <div id="usersList" class="space-y-3 overflow-y-auto max-h-[600px] pr-1">
-                        <p class="dark:text-miruta-textMutedDark text-slate-500 text-xs italic text-center py-6">Cargando usuarios registrados...</p>
+                        <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
+                            <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            <span>Cargando usuarios...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -486,28 +395,31 @@
                         <h2 class="text-xl font-black">Moderación de Alertas Comunitarias</h2>
                         <p class="text-xs dark:text-miruta-textMutedDark text-slate-500 font-medium mt-0.5">Validación de reportes de tráfico e incidencias emitidas por pasajeros</p>
                     </div>
-                    <button onclick="loadAlerts()" class="app-chip-btn">
-                        <svg class="w-4 h-4 text-m3status-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span>Actualizar Alertas</span>
-                    </button>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping inline-block"></span>
+                        <span class="text-xs font-bold text-red-500">En tiempo real</span>
+                    </div>
                 </div>
 
-                <!-- FILTROS DE ALERTAS DE REFERENCIA VISUAL (Sin emojis) -->
+                <!-- FILTROS DE ALERTAS -->
                 <div class="flex items-center space-x-2">
-                    <button onclick="filterAlerts('todas')" id="filter-todas" class="app-chip-btn active">
+                    <button onclick="window.app.filterAlerts('todas')" id="filter-todas" class="app-chip-btn active">
                         <span id="filter-label-todas">✓ Todas (0)</span>
                     </button>
-                    <button onclick="filterAlerts('globales')" id="filter-globales" class="app-chip-btn">
+                    <button onclick="window.app.filterAlerts('globales')" id="filter-globales" class="app-chip-btn">
                         <span id="filter-label-globales">Globales (0)</span>
                     </button>
-                    <button onclick="filterAlerts('pendientes')" id="filter-pendientes" class="app-chip-btn">
+                    <button onclick="window.app.filterAlerts('pendientes')" id="filter-pendientes" class="app-chip-btn">
                         <span id="filter-label-pendientes">Pendientes (0)</span>
                     </button>
                 </div>
 
                 <div class="m3-surface-card p-6 space-y-4">
                     <div id="alertsList" class="space-y-3 overflow-y-auto max-h-[600px] pr-1">
-                        <p class="dark:text-miruta-textMutedDark text-slate-500 text-xs italic text-center py-6">Cargando reportes comunitarios...</p>
+                        <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
+                            <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            <span>Sincronizando incidencias...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -522,25 +434,25 @@
 
     <!-- NAVBAR MÓVIL INFERIOR -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 dark:bg-miruta-surfaceDark/95 bg-white/95 backdrop-blur-md border-t dark:border-miruta-borderDark border-slate-200 flex justify-around items-center py-2 z-40 px-2">
-        <button onclick="switchView('dashboard')" id="mobile-dashboard" class="mobile-item active flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
+        <button onclick="window.app.switchView('dashboard')" id="mobile-dashboard" class="mobile-item active flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
             <div class="mobile-icon-container w-12 h-7 rounded-full flex items-center justify-center mb-0.5 transition">
                 <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             </div>
             <span>Dashboard</span>
         </button>
-        <button onclick="switchView('conductores')" id="mobile-conductores" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
+        <button onclick="window.app.switchView('conductores')" id="mobile-conductores" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
             <div class="mobile-icon-container w-12 h-7 rounded-full flex items-center justify-center mb-0.5 transition">
-                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22L5 20c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1h8v1c0 .55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22L20 6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 11H6V6h12v5z"/></svg>
+                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22L5 20c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c0.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22L20 6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 11H6V6h12v5z"/></svg>
             </div>
             <span>Choferes</span>
         </button>
-        <button onclick="switchView('usuarios')" id="mobile-usuarios" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
+        <button onclick="window.app.switchView('usuarios')" id="mobile-usuarios" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
             <div class="mobile-icon-container w-12 h-7 rounded-full flex items-center justify-center mb-0.5 transition">
                 <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             </div>
             <span>Usuarios</span>
         </button>
-        <button onclick="switchView('alertas')" id="mobile-alertas" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
+        <button onclick="window.app.switchView('alertas')" id="mobile-alertas" class="mobile-item flex flex-col items-center justify-center text-[10px] font-bold cursor-pointer">
             <div class="mobile-icon-container w-12 h-7 rounded-full flex items-center justify-center mb-0.5 transition">
                 <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
             </div>
@@ -548,422 +460,7 @@
         </button>
     </nav>
 
-    <!-- Firebase SDKs (Solo Firestore) e Integración JavaScript Protegida con sessionStorage -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            projectId: "appmiruta-16530",
-            apiKey: "AIzaSyBDstlojmjLfxCGWYIAS4eFL9kOJKCeyY4",
-            appId: "1:233432719012:web:your_web_app_id_here" // Asume una app web, el JS SDK web lo pide a veces, pero min requiere apiKey y projectId.
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // PROTECCIÓN DE SESIÓN WEB MEDIANTE sessionStorage
-        const adminUser = sessionStorage.getItem("adminUser");
-        if (!adminUser) {
-            window.location.href = "login.html";
-        } else {
-            const badgeEl = document.getElementById("adminUserBadge");
-            if (badgeEl) badgeEl.textContent = `Admin: ${adminUser}`;
-        }
-
-        // Control de Tema Claro / Oscuro
-        window.toggleTheme = function() {
-            const html = document.documentElement;
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        };
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.remove('light');
-            document.documentElement.classList.add('dark');
-        }
-
-        // NAVEGACIÓN REAL ENTRE VISTAS (SPA)
-        window.switchView = function(viewName) {
-            document.querySelectorAll('.admin-view').forEach(el => el.classList.remove('active'));
-
-            const targetView = document.getElementById(`view-${viewName}`);
-            if (targetView) targetView.classList.add('active');
-
-            document.querySelectorAll('.sidebar-item').forEach(btn => btn.classList.remove('active'));
-            const activeNavBtn = document.getElementById(`nav-${viewName}`);
-            if (activeNavBtn) activeNavBtn.classList.add('active');
-
-            document.querySelectorAll('.mobile-item').forEach(btn => btn.classList.remove('active'));
-            const activeMobileBtn = document.getElementById(`mobile-${viewName}`);
-            if (activeMobileBtn) activeMobileBtn.classList.add('active');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            if (viewName === 'conductores') loadDrivers();
-            else if (viewName === 'usuarios') loadUsers();
-            else if (viewName === 'alertas') loadAlerts();
-        };
-
-        // Modales
-        window.openModal = function(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.remove('hidden');
-        };
-
-        window.closeModal = function(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.add('hidden');
-        };
-
-        // Toast Notifications M3
-        window.showToast = function(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            if (!container) return;
-
-            const toast = document.createElement('div');
-            toast.className = `pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-2xl shadow-2xl border transition-all duration-300 transform translate-y-2 opacity-0 text-xs font-bold backdrop-blur-md`;
-
-            let iconSvg = '';
-            if (type === 'success') {
-                toast.classList.add('bg-emerald-900/90', 'border-m3status-success/40', 'text-emerald-100');
-                iconSvg = `<svg class="w-4 h-4 text-m3status-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>`;
-            } else if (type === 'error') {
-                toast.classList.add('bg-red-900/90', 'border-m3status-danger/40', 'text-red-100');
-                iconSvg = `<svg class="w-4 h-4 text-m3status-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>`;
-            } else {
-                toast.classList.add('bg-slate-900/90', 'border-miruta-primary/40', 'text-slate-100');
-                iconSvg = `<svg class="w-4 h-4 text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
-            }
-
-            toast.innerHTML = `<div class="shrink-0">${iconSvg}</div><div class="flex-1">${message}</div>`;
-            container.appendChild(toast);
-
-            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
-            setTimeout(() => {
-                toast.classList.add('translate-y-2', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
-        };
-
-        function updateGreeting() {
-            const hour = new Date().getHours();
-            const greetingEl = document.getElementById('greetingText');
-            if (greetingEl) {
-                if (hour >= 6 && hour < 12) greetingEl.textContent = 'Buenos días';
-                else if (hour >= 12 && hour < 19) greetingEl.textContent = 'Buenas tardes';
-                else greetingEl.textContent = 'Buenas noches';
-            }
-        }
-        updateGreeting();
-
-        window.registerDriver = async function() {
-            const username = document.getElementById("modalNewDriverUser").value.trim();
-            const pass = document.getElementById("modalNewDriverPass").value.trim();
-            const ruta = document.getElementById("modalNewDriverRoute").value.trim();
-
-            if (!username || !pass || !ruta) {
-                window.showToast("Por favor completa todos los campos para dar de alta al conductor.", "error");
-                return;
-            }
-
-            try {
-                await setDoc(doc(db, "users", username), {
-                    username: username,
-                    role: "conductor",
-                    tempPassword: pass,
-                    updatedAt: Date.now()
-                });
-
-                await setDoc(doc(db, "conductores", username), {
-                    id: username,
-                    nombre: username,
-                    ruta: ruta,
-                    lat: 18.9994,
-                    lng: -98.2618,
-                    activo: true,
-                    updatedAt: Date.now()
-                });
-
-                window.showToast(`¡Conductor '${username}' registrado exitosamente!`, "success");
-                document.getElementById("modalNewDriverUser").value = "";
-                document.getElementById("modalNewDriverPass").value = "";
-                document.getElementById("modalNewDriverRoute").value = "";
-                loadDrivers();
-                loadUsers();
-            } catch (e) {
-                window.showToast(`Error al dar de alta conductor: ${e.message}`, "error");
-            }
-        };
-
-        window.loadDrivers = async function() {
-            const container = document.getElementById("driversList");
-            const statEl = document.getElementById("statDriversCount");
-            container.innerHTML = `
-                <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
-                    <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                    <span>Conectando a Firestore...</span>
-                </div>
-            `;
-            try {
-                const querySnapshot = await getDocs(collection(db, "conductores"));
-                if (statEl) statEl.textContent = querySnapshot.size;
-
-                if (querySnapshot.empty) {
-                    container.innerHTML = `
-                        <div class="m3-inner-item p-6 text-center">
-                            <p class="text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">No hay unidades transmitiendo en este momento.</p>
-                        </div>
-                    `;
-                    return;
-                }
-                container.innerHTML = "";
-                querySnapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    container.innerHTML += `
-                        <div class="m3-inner-item p-4 flex justify-between items-center hover:border-miruta-primary/40 transition shadow-sm group">
-                            <div class="flex items-center space-x-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-miruta-primary/15 border border-miruta-primary/30 flex items-center justify-center shrink-0">
-                                    <img src="bus.svg" alt="Unidad" class="w-6 h-6 object-contain shrink-0">
-                                </div>
-                                <div>
-                                    <p class="font-black text-xs group-hover:text-miruta-primary transition">${data.nombre || 'Chofer'}</p>
-                                    <p class="text-[11px] text-miruta-primary font-bold">Ruta: ${data.ruta || 'L1'} • Activo</p>
-                                    <p class="text-[10px] dark:text-miruta-textMutedDark text-slate-500 font-mono mt-0.5">Lat: ${data.lat?.toFixed(4)}, Lng: ${data.lng?.toFixed(4)}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <span class="hidden sm:inline-block text-[10px] bg-m3status-success/15 text-m3status-success border border-m3status-success/30 px-2.5 py-1 rounded-full font-extrabold">Transmitiendo</span>
-                                <span class="relative flex h-2.5 w-2.5">
-                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-m3status-success opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-m3status-success"></span>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                });
-            } catch (e) {
-                container.innerHTML = `<p class="text-m3status-danger text-xs py-3 text-center font-bold">Error al cargar conductores: ${e.message}</p>`;
-            }
-        };
-
-        window.loadUsers = async function() {
-            const container = document.getElementById("usersList");
-            const statEl = document.getElementById("statUsersCount");
-            container.innerHTML = `
-                <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
-                    <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                    <span>Cargando usuarios...</span>
-                </div>
-            `;
-            try {
-                const querySnapshot = await getDocs(collection(db, "users"));
-                if (statEl) statEl.textContent = querySnapshot.size;
-
-                if (querySnapshot.empty) {
-                    container.innerHTML = `
-                        <div class="m3-inner-item p-6 text-center">
-                            <p class="text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">No hay usuarios registrados.</p>
-                        </div>
-                    `;
-                    return;
-                }
-                container.innerHTML = "";
-                querySnapshot.forEach((docSnap) => {
-                    const data = docSnap.data();
-                    const isConductor = data.role === 'conductor';
-                    const targetRole = isConductor ? 'pasajero' : 'conductor';
-
-                    container.innerHTML += `
-                        <div class="m3-inner-item p-4 flex justify-between items-center hover:border-miruta-primary/30 transition shadow-sm">
-                            <div class="flex items-center space-x-3.5">
-                                <div class="w-10 h-10 rounded-xl ${isConductor ? 'bg-miruta-primary/20 text-miruta-primary border border-miruta-primary/30' : 'bg-m3status-info/15 text-m3status-info border border-m3status-info/30'} flex items-center justify-center font-black text-xs uppercase shrink-0">
-                                    ${(data.username || 'U').substring(0, 2)}
-                                </div>
-                                <div>
-                                    <p class="font-extrabold text-xs">${data.username}</p>
-                                    <span class="inline-block mt-0.5 text-[10px] uppercase font-black px-2 py-0.5 rounded-md ${isConductor ? 'bg-miruta-primary/20 text-miruta-primary border border-miruta-primary/30' : 'bg-slate-200 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/10'}">
-                                        Rol: ${data.role || 'pasajero'}
-                                    </span>
-                                </div>
-                            </div>
-                            <button onclick="promoteUser('${docSnap.id}', '${targetRole}')" class="app-chip-btn">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-                                <span>${isConductor ? 'Hacer Pasajero' : 'Hacer Conductor'}</span>
-                            </button>
-                        </div>
-                    `;
-                });
-            } catch (e) {
-                container.innerHTML = `<p class="text-m3status-danger text-xs py-3 text-center font-bold">Error al cargar usuarios: ${e.message}</p>`;
-            }
-        };
-
-        window.promoteUser = async function(username, newRole) {
-            try {
-                await updateDoc(doc(db, "users", username), { role: newRole });
-                window.showToast(`¡Rol de '${username}' actualizado a '${newRole}' exitosamente!`, "success");
-                loadUsers();
-            } catch (e) {
-                window.showToast(`Error al actualizar rol: ${e.message}`, "error");
-            }
-        };
-
-        // Filtro local para la vista de alertas con cálculo dinámico de contadores
-        let currentAlertsData = [];
-        let alertFilterMode = 'todas';
-
-        window.filterAlerts = function(mode) {
-            alertFilterMode = mode;
-            document.querySelectorAll('[id^="filter-"]').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(`filter-${mode}`);
-            if (activeBtn) activeBtn.classList.add('active');
-            renderAlertsList();
-        };
-
-        function updateAlertCounters() {
-            const countTodas = currentAlertsData.length;
-            const countGlobales = currentAlertsData.filter(d => d.data.esGlobal === true).length;
-            const countPendientes = currentAlertsData.filter(d => d.data.esGlobal !== true).length;
-
-            const lblTodas = document.getElementById('filter-label-todas');
-            const lblGlobales = document.getElementById('filter-label-globales');
-            const lblPendientes = document.getElementById('filter-label-pendientes');
-
-            if (lblTodas) lblTodas.textContent = `✓ Todas (${countTodas})`;
-            if (lblGlobales) lblGlobales.textContent = `Globales (${countGlobales})`;
-            if (lblPendientes) lblPendientes.textContent = `Pendientes (${countPendientes})`;
-        }
-
-        function renderAlertsList() {
-            updateAlertCounters();
-            const container = document.getElementById("alertsList");
-            let filtered = currentAlertsData;
-            if (alertFilterMode === 'globales') {
-                filtered = currentAlertsData.filter(d => d.data.esGlobal === true);
-            } else if (alertFilterMode === 'pendientes') {
-                filtered = currentAlertsData.filter(d => d.data.esGlobal !== true);
-            }
-
-            if (filtered.length === 0) {
-                container.innerHTML = `
-                    <div class="m3-inner-item p-6 text-center">
-                        <svg class="w-8 h-8 text-m3status-success/70 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <p class="text-xs font-extrabold">¡Sin incidencias en esta categoría!</p>
-                        <p class="text-[11px] dark:text-miruta-textMutedDark text-slate-500 font-medium mt-0.5">El servicio opera con normalidad.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = "";
-            filtered.forEach((item) => {
-                const data = item.data;
-                const docId = item.id;
-                const isGlobal = data.esGlobal === true;
-
-                container.innerHTML += `
-                    <div class="m3-inner-item p-4 space-y-3 hover:border-miruta-primary/30 transition shadow-sm">
-                        <div class="flex justify-between items-start gap-2">
-                            <div>
-                                <span class="inline-block text-[10px] bg-m3status-danger/15 text-m3status-danger border border-m3status-danger/30 px-2.5 py-0.5 rounded-md font-black uppercase tracking-wider mb-1">
-                                    ${data.tipo || 'Alerta'}
-                                </span>
-                                <h4 class="font-extrabold text-xs">${data.titulo || 'Reporte de incidencia'}</h4>
-                            </div>
-                            <span class="shrink-0 text-[10px] font-black px-2.5 py-1 rounded-full border flex items-center space-x-1 ${isGlobal ? 'bg-m3status-success/15 text-m3status-success border-m3status-success/30' : 'bg-miruta-primary/15 text-miruta-primary border-miruta-primary/30'}">
-                                <span class="w-1.5 h-1.5 rounded-full ${isGlobal ? 'bg-m3status-success' : 'bg-miruta-primary'} inline-block"></span>
-                                <span>${isGlobal ? 'Global' : 'Pendiente'} (${data.confirmaciones || 1})</span>
-                            </span>
-                        </div>
-
-                        <p class="text-xs font-medium dark:text-slate-300 text-slate-700 leading-relaxed">${data.descripcion || 'Sin detalle adicional'}</p>
-
-                        <div class="flex justify-end space-x-2 pt-2 border-t dark:border-white/10 border-slate-200">
-                            ${!isGlobal ? `
-                                <button onclick="verifyAlert('${docId}')" class="text-xs bg-m3status-success/15 hover:bg-m3status-success/25 text-emerald-600 dark:text-emerald-300 border border-m3status-success/30 px-3.5 py-2 rounded-xl font-extrabold transition flex items-center space-x-1.5 cursor-pointer">
-                                    <svg class="w-3.5 h-3.5 text-m3status-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                                    <span>Aprobar Global</span>
-                                </button>
-                            ` : ''}
-                            <button onclick="deleteAlert('${docId}')" class="text-xs bg-m3status-danger/15 hover:bg-m3status-danger/25 text-red-600 dark:text-red-300 border border-m3status-danger/30 px-3.5 py-2 rounded-xl font-extrabold transition flex items-center space-x-1.5 cursor-pointer">
-                                <svg class="w-3.5 h-3.5 text-m3status-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                                <span>Eliminar</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        window.loadAlerts = async function() {
-            const container = document.getElementById("alertsList");
-            const statEl = document.getElementById("statAlertsCount");
-            container.innerHTML = `
-                <div class="flex items-center justify-center space-x-2 py-6 text-xs font-semibold dark:text-miruta-textMutedDark text-slate-500">
-                    <svg class="w-4 h-4 animate-spin text-miruta-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                    <span>Cargando alertas...</span>
-                </div>
-            `;
-            try {
-                const querySnapshot = await getDocs(collection(db, "incidencias"));
-                if (statEl) statEl.textContent = querySnapshot.size;
-
-                currentAlertsData = [];
-                querySnapshot.forEach((docSnap) => {
-                    currentAlertsData.push({ id: docSnap.id, data: docSnap.data() });
-                });
-
-                renderAlertsList();
-            } catch (e) {
-                container.innerHTML = `<p class="text-m3status-danger text-xs py-3 text-center font-bold">Error al cargar alertas: ${e.message}</p>`;
-            }
-        };
-
-        window.verifyAlert = async function(id) {
-            try {
-                await updateDoc(doc(db, "incidencias", id), { esGlobal: true });
-                window.showToast("¡Alerta promovida a Global con éxito!", "success");
-                loadAlerts();
-            } catch (e) {
-                window.showToast(`Error al aprobar alerta: ${e.message}`, "error");
-            }
-        };
-
-        window.deleteAlert = async function(id) {
-            if (!confirm("¿Estás seguro de que deseas eliminar esta alerta?")) return;
-            try {
-                await deleteDoc(doc(db, "incidencias", id));
-                window.showToast("Alerta eliminada correctamente.", "info");
-                loadAlerts();
-            } catch (e) {
-                window.showToast(`Error al eliminar alerta: ${e.message}`, "error");
-            }
-        };
-
-        window.logout = function() {
-            sessionStorage.removeItem("adminUser");
-            window.location.href = "login.html";
-        };
-
-        window.refreshAll = function() {
-            loadDrivers();
-            loadUsers();
-            loadAlerts();
-            window.showToast("Datos actualizados en tiempo real.", "info");
-        };
-
-        // Carga inicial de datos
-        loadDrivers();
-        loadUsers();
-        loadAlerts();
-    </script>
+    <!-- Módulo Principal ES -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

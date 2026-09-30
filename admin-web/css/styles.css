@@ -1,0 +1,187 @@
+/* Mi Ruta - Design System Tokens & M3 Styles */
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Modos Claro y Oscuro sincronizados con la app Android Mi Ruta */
+html.light body {
+    background-color: #F0E8E4;
+    color: #191B1D;
+}
+
+html.dark body {
+    background-color: #191B1D;
+    color: #FFFFFF;
+}
+
+/* Scrollbars personalizados */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Tarjetas M3 Adaptativas */
+.m3-surface-card {
+    border-radius: 1.25rem; /* 20px */
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+html.light .m3-surface-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+html.dark .m3-surface-card {
+    background-color: #212020;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedores secundarios interiores */
+.m3-inner-item {
+    border-radius: 0.875rem; /* 14px */
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+html.light .m3-inner-item {
+    background-color: #F8F9FA;
+    border: 1px solid #E2E8F0;
+}
+html.dark .m3-inner-item {
+    background-color: #2A2D32;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Chips / Botones de acción */
+.app-chip-btn {
+    border-radius: 0.75rem; /* 12px */
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    user-select: none;
+}
+
+/* Estado activo para chips y navegación */
+.app-chip-btn.active, 
+.sidebar-item.active {
+    background-color: #FEB30F !important;
+    color: #191B1D !important;
+    border-color: #FEB30F !important;
+    box-shadow: 0 2px 8px rgba(254, 179, 15, 0.3);
+}
+.app-chip-btn.active svg, 
+.sidebar-item.active svg {
+    color: #191B1D !important;
+    fill: currentColor;
+}
+
+/* Estado inactivo */
+html.light .app-chip-btn:not(.active), 
+html.light .sidebar-item:not(.active) {
+    background-color: #FFFFFF;
+    color: #191B1D;
+    border: 1px solid #CBD5E1;
+}
+html.light .app-chip-btn:not(.active):hover, 
+html.light .sidebar-item:not(.active):hover {
+    background-color: #F1F5F9;
+    border-color: #FEB30F;
+}
+
+html.dark .app-chip-btn:not(.active), 
+html.dark .sidebar-item:not(.active) {
+    background-color: #2A2D32;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+html.dark .app-chip-btn:not(.active):hover, 
+html.dark .sidebar-item:not(.active):hover {
+    background-color: #33373E;
+    border-color: #FEB30F;
+}
+
+/* Navegación móvil inferior */
+.mobile-item.active {
+    color: #FEB30F;
+}
+.mobile-item.active .mobile-icon-container {
+    background-color: rgba(254, 179, 15, 0.2);
+}
+
+/* Control de visibilidad en SPA */
+.admin-view {
+    display: none;
+}
+.admin-view.active {
+    display: block;
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skeleton Loading Shimmer */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+}
+html.dark .skeleton {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 1.5s infinite;
+}
+html.dark .skeleton::after {
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.1) 60%,
+        rgba(255, 255, 255, 0)
+    );
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
